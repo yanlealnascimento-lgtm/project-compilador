@@ -11,7 +11,7 @@ public class MockParser {
     }
 
     public void parse() {
-        System.out.println("parser não implementado ainda, tokens recebidos: " + tokens.size());
+        System.out.println("parser nao implementado ainda, tokens recebidos: " + tokens.size());
         for (Token t : tokens) {
             System.out.println(t);
         }

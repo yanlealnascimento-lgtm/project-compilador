@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Scanner {
-    private String fonte;Q
+    private String fonte;
     private int pos;
     private int linha;
     private List<Token> tokens;
@@ -79,6 +79,7 @@ public class Scanner {
         if (palavra.equals("while")) return new Token(TokenType.WHILE, palavra, l);
         if (palavra.equals("print")) return new Token(TokenType.PRINT, palavra, l);
         if (palavra.equals("int")) return new Token(TokenType.INT, palavra, l);
+        if (palavra.equals("bool")) return new Token(TokenType.BOOL, palavra, l);
         if (palavra.equals("else")) return new Token(TokenType.ELSE, palavra, l);
         if (palavra.equals("true")) return new Token(TokenType.TRUE, palavra, l);
         if (palavra.equals("false")) return new Token(TokenType.FALSE, palavra, l);
@@ -141,9 +142,17 @@ public class Scanner {
             } else if (c == '}') {
                 tokens.add(new Token(TokenType.RBRACE, "}", l));
                 avanca();
+            } else if (c == '*') {
+                tokens.add(new Token(TokenType.TIMES, "*", l));
+                avanca();
             } else if (c == '!') {
-                tokens.add(new Token(TokenType.NEQ, "!=", l));
-                avanca(); avanca();
+                if (proximo() == '=') {
+                    tokens.add(new Token(TokenType.NEQ, "!=", l));
+                    avanca(); avanca();
+                } else {
+                    System.out.println("caractere invalido: " + c + " na linha " + l);
+                    avanca();
+                }
             } else if (c == '<') {
                 tokens.add(new Token(TokenType.LT, "<", l));
                 avanca();
