@@ -1,0 +1,12 @@
+package scanner;
+
+public enum TokenType {
+    NUMBER, IDENTIFIER, STRING,
+    PLUS, MINUS, TIMES, DIVIDE,
+    ASSIGN, EQ, NEQ, LT, GT,
+    LPAREN, RPAREN, LBRACE, RBRACE, SEMICOLON,
+    IF, ELSE, WHILE,
+    INT, BOOL, TRUE, FALSE,
+    PRINT, READ,
+    EOF
+}
