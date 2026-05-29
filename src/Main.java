@@ -1,6 +1,7 @@
 import scanner.Scanner;
 import scanner.Token;
-import parser.MockParser;
+import parser.Parser;
+import parser.Node;
 import java.util.List;
 
 public class Main {
@@ -12,7 +13,7 @@ public class Main {
                           "    print x;\n" +
                           "}\n";
 
-        System.out.println("fonte: ");
+        System.out.println("fonte:");
         System.out.println(programa);
 
         Scanner scanner = new Scanner(programa);
@@ -24,7 +25,9 @@ public class Main {
         }
 
         System.out.println();
-        MockParser p = new MockParser(tokens);
-        p.parse();
+        System.out.println("AST:");
+        Parser p = new Parser(tokens);
+        Node ast = p.parse();
+        System.out.println(ast);
     }
 }
