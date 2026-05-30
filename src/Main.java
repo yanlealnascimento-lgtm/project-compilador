@@ -2,6 +2,7 @@ import scanner.Scanner;
 import scanner.Token;
 import parser.Parser;
 import parser.Node;
+import semantic.AnalisadorSemantico;
 import java.util.List;
 
 public class Main {
@@ -29,5 +30,10 @@ public class Main {
         Parser p = new Parser(tokens);
         Node ast = p.parse();
         System.out.println(ast);
+
+        System.out.println("analise semantica:");
+        AnalisadorSemantico semantico = new AnalisadorSemantico();
+        semantico.analisar(ast);
+        System.out.println("sem erros semanticos");
     }
 }
