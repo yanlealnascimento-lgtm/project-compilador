@@ -3,6 +3,8 @@ import scanner.Token;
 import parser.Parser;
 import parser.Node;
 import semantic.AnalisadorSemantico;
+import ir.GeradorIR;
+import ir.Instrucao;
 import java.util.List;
 
 public class Main {
@@ -35,5 +37,13 @@ public class Main {
         AnalisadorSemantico semantico = new AnalisadorSemantico();
         semantico.analisar(ast);
         System.out.println("sem erros semanticos");
+
+        System.out.println();
+        System.out.println("codigo intermediario:");
+        GeradorIR gerador = new GeradorIR();
+        List<Instrucao> ir = gerador.gerar(ast);
+        for (Instrucao inst : ir) {
+            System.out.println(inst);
+        }
     }
 }
