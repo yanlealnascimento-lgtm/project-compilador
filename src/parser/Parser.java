@@ -186,19 +186,25 @@ public class Parser {
         if (veja(TokenType.NUMBER)) {
             pos++;
             return new Node("numero", t.valor);
-        } else if (veja(TokenType.TRUE) || veja(TokenType.FALSE)) {
+        }
+
+        if (veja(TokenType.TRUE) || veja(TokenType.FALSE)) {
             pos++;
             return new Node("booleano", t.valor);
-        } else if (veja(TokenType.IDENTIFIER)) {
+        }
+
+        if (veja(TokenType.IDENTIFIER)) {
             pos++;
             return new Node("id", t.valor);
-        } else if (veja(TokenType.LPAREN)) {
+        }
+
+        if (veja(TokenType.LPAREN)) {
             pos++;
             Node expr = parseExpr();
             consome(TokenType.RPAREN);
             return expr;
-        } else {
-            throw new RuntimeException("fator invalido: " + t.tipo + " na linha " + t.linha);
         }
+
+        throw new RuntimeException("fator invalido: " + t.tipo + " na linha " + t.linha);
     }
 }
