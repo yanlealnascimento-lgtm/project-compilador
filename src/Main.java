@@ -5,6 +5,7 @@ import parser.Node;
 import semantic.AnalisadorSemantico;
 import ir.GeradorIR;
 import ir.Instrucao;
+import codegen.GeradorCodigo;
 import java.util.List;
 
 public class Main {
@@ -45,5 +46,14 @@ public class Main {
         for (Instrucao inst : ir) {
             System.out.println(inst);
         }
+
+        System.out.println();
+        System.out.println("bytecode:");
+        GeradorCodigo gc = new GeradorCodigo();
+        List<String> bytecode = gc.gerar(ast);
+        for (String linha : bytecode) {
+            System.out.println(linha);
+        }
+
     }
 }
