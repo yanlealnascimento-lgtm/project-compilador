@@ -1,0 +1,25 @@
+int x;
+int soma;
+int i;
+bool ativo;
+
+x = 20;
+soma = 0;
+i = 0;
+ativo = true;
+
+while (i < x) {
+    soma = soma + i;
+    i = i + 1;
+}
+
+print soma;
+
+if (soma > 40) {
+    print soma;
+} else {
+    print 0;
+}
+
+read x;
+print x;
