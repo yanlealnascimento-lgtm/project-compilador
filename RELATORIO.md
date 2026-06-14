@@ -97,7 +97,7 @@ Sobre otimização: o enunciado deixa isso como opcional/bônus e a gente não c
 
 ## Rodando o projeto
 
-O código fonte de teste fica em `programa.txt`, na raiz. Pra compilar e rodar:
+O código fonte de teste fica em `cod.txt`, na raiz. Pra compilar e rodar:
 
 ```
 javac -d out $(find src -name "*.java")
@@ -114,10 +114,10 @@ A saída mostra, em ordem: o código fonte, os tokens, a AST, se passou na anál
 
 ## Divisão do trabalho
 
-- Integrante 1: scanner + parser (léxica e sintática)
-- Integrante 2: análise semântica (tabela de símbolos, checagem de tipo)
-- Integrante 3: código intermediário, bytecode e a máquina virtual
+- Yan Leal: scanner + parser (léxica e sintática)
+- Erick de Souza: análise semântica (tabela de símbolos, checagem de tipo)
+- Kauan Aparecido: código intermediário, bytecode e a máquina virtual
 
 ## Conclusão
 
-No final o compilador passa por todas as fases pedidas, da leitura do arquivo até a execução do bytecode na VM, com checagem de tipo e escopo no meio do caminho. O `programa.txt` de teste usa `while`, `if/else`, operações aritméticas e `read`/`print`, então cobre as construções principais da linguagem.
+No final o compilador passa por todas as fases pedidas, da leitura do arquivo até a execução do bytecode na VM, com checagem de tipo e escopo no meio do caminho. O `cod.txt` de teste usa `while`, `if/else`, operações aritméticas e `read`/`print`, então cobre as construções principais da linguagem.
