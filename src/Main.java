@@ -6,16 +6,16 @@ import semantic.AnalisadorSemantico;
 import ir.GeradorIR;
 import ir.Instrucao;
 import codegen.GeradorCodigo;
+import codegen.MaquinaVirtual;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String programa = "int x;\n" +
-                          "bool ativo;\n" +
-                          "x = 10;\n" +
-                          "if (x != 5) {\n" +
-                          "    print x;\n" +
-                          "}\n";
+        String caminho = args.length > 0 ? args[0] : "cod.txt";
+        String programa = lerArquivo(caminho);
 
         System.out.println("fonte:");
         System.out.println(programa);
@@ -55,5 +55,26 @@ public class Main {
             System.out.println(linha);
         }
 
+        System.out.println();
+        System.out.println("execucao:");
+        MaquinaVirtual vm = new MaquinaVirtual(bytecode);
+        vm.executar();
+    }
+
+    private static String lerArquivo(String caminho) {
+        StringBuilder conteudo = new StringBuilder();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(caminho));
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                conteudo.append(linha).append("\n");
+            }
+            br.close();
+        } catch (IOException e) {
+            throw new RuntimeException("erro pra ler o arquivo " + caminho);
+        }
+
+        return conteudo.toString();
     }
 }
